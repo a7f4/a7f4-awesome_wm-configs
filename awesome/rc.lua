@@ -239,7 +239,7 @@ globalkeys = awful.util.table.join(awful.key({ modkey, }, "Left", awful.tag.view
     -- Standard program
     awful.key({ modkey, }, "Return", function() awful.util.spawn(terminal) end),
 
-    awful.key({ modkey, "Control" }, "f", function() awful.util.spawn(fileManager) end),
+    awful.key({ modkey }, "f", function() awful.util.spawn(fileManager) end),
     awful.key({ modkey, "Control" }, "l", function() awful.util.spawn("slock") end),
 
     awful.key({ modkey, "Control" }, "r", awesome.restart),
@@ -255,7 +255,7 @@ globalkeys = awful.util.table.join(awful.key({ modkey, }, "Left", awful.tag.view
     -- Prompt
     awful.key({ modkey }, "r", function() mypromptbox[mouse.screen]:run() end))
 
-clientkeys = awful.util.table.join(awful.key({ modkey, }, "f", function(c) c.fullscreen = not c.fullscreen end),
+clientkeys = awful.util.table.join(awful.key({ modkey, "Control" }, "f", function(c) c.fullscreen = not c.fullscreen end),
     awful.key({ modkey, "Shift" }, "c", function(c) c:kill() end),
 
     awful.key({ modkey, "Control" }, "space", awful.client.floating.toggle),
@@ -344,6 +344,10 @@ awful.rules.rules = {
     -- Gimp rules: we want the main window to be tiled, however all the helper windows (toolbox, docks, etc) to be floating.
     {
         rule = { class = "Gimp", role = "gimp-toolbox" },
+        properties = { ontop = true }
+    },
+    {
+        rule = { class = "Gimp", role = "gimp-toolbox-color-dialog" },
         properties = { ontop = true }
     },
     {
