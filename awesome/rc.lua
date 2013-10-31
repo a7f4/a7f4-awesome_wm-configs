@@ -252,7 +252,7 @@ globalkeys = awful.util.table.join(awful.key({ modkey, }, "Left", awful.tag.view
     awful.key({ modkey, "Control" }, "l", function() awful.tag.incncol(-1) end),
     awful.key({ modkey, }, "space", function() awful.layout.inc(layouts, 1) end),
 
-       -- Prompt
+    -- Prompt
     awful.key({ modkey }, "r", function() mypromptbox[mouse.screen]:run() end))
 
 clientkeys = awful.util.table.join(awful.key({ modkey, }, "f", function(c) c.fullscreen = not c.fullscreen end),
@@ -340,10 +340,17 @@ awful.rules.rules = {
         rule = { class = "pinentry" },
         properties = { floating = true }
     },
+
+    -- Gimp rules: we want the main window to be tiled, however all the helper windows (toolbox, docks, etc) to be floating.
     {
-        rule = { class = "gimp" },
-        properties = { floating = true }
+        rule = { class = "Gimp", role = "gimp-toolbox" },
+        properties = { ontop = true }
     },
+    {
+        rule = { class = "Gimp", role = "gimp-dock" },
+        properties = { ontop = true }
+    },
+
     {
         rule = { class = "Oblogout" },
         properties = { floating = true }
