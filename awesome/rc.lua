@@ -11,6 +11,14 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
+-- This is used later as the default terminal and editor to run.
+terminal = "urxvt"
+fileManager = "pcmanfm"
+visualEditor = "leafpad"
+editor = os.getenv("EDITOR") or "vim"
+editor_cmd = terminal .. " -e " .. editor
+themePath = "/home/lexaux/work/lexaux-linux-configs/awesome/theme-default/theme.lua"
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -42,14 +50,8 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/home/lexaux/work/lexaux-linux-configs/awesome/theme-default/theme.lua")
+beautiful.init(themePath)
 
--- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
-fileManager = "pcmanfm"
-visualEditor = "leafpad"
-editor = os.getenv("EDITOR") or "vim"
-editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -80,7 +82,7 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6 }, s, layouts[1])
+    tags[s] = awful.tag({ 'web', 'work', 'skype', 'win', 'gimp', 'graph' }, s, layouts[1])
 end
 -- }}}
 
@@ -363,8 +365,11 @@ awful.rules.rules = {
     },
 
     -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
+    { rule = { class = "Skype" },
+       properties = { tag = tags[1][3] } },
+
+    { rule = { class = "VirtualBox" },
+        properties = { tag = tags[1][4] } }
 }
 -- }}}
 
