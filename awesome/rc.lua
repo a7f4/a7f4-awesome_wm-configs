@@ -47,6 +47,7 @@ beautiful.init("/home/lexaux/work/lexaux-linux-configs/awesome/theme-default/the
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
 fileManager = "pcmanfm"
+visualEditor = "leafpad"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -240,6 +241,7 @@ globalkeys = awful.util.table.join(awful.key({ modkey, }, "Left", awful.tag.view
     awful.key({ modkey, }, "Return", function() awful.util.spawn(terminal) end),
 
     awful.key({ modkey }, "f", function() awful.util.spawn(fileManager) end),
+    awful.key({ modkey }, "e", function() awful.util.spawn(visualEditor) end),
     awful.key({ modkey, "Control" }, "l", function() awful.util.spawn("slock") end),
 
     awful.key({ modkey, "Control" }, "r", awesome.restart),
