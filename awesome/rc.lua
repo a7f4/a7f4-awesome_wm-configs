@@ -15,6 +15,8 @@ local menubar = require("menubar")
 terminal = "urxvt"
 fileManager = "pcmanfm"
 visualEditor = "leafpad"
+locker = "slock"
+logoutCmd = "oblogout"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 themePath = "/home/lexaux/work/lexaux-linux-configs/awesome/theme-default/theme.lua"
@@ -212,6 +214,13 @@ globalkeys = awful.util.table.join(awful.key({ modkey, }, "Left", awful.tag.view
     awful.key({ modkey, }, "Right", awful.tag.viewnext),
     awful.key({ modkey, }, "Escape", awful.tag.history.restore),
 
+    -- Special keys integration (no modkey required)
+    awful.key({}, "XF86PowerOff", function() awful.util.spawn(logoutCmd) end),
+    awful.key({}, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer set Master 5%+ unmute") end),
+    awful.key({}, "XF86AudioLowerVolume", function() awful.util.spawn("amixer set Master 5%- unmute") end),
+    awful.key({}, "XF86AudioMute", function() awful.util.spawn("amixer set Master toggle") end),
+    awful.key({}, "XF86Sleep", function() awful.util.spawn("systemctl suspend") end),
+
 
     awful.key({ modkey, }, "j",
         function()
@@ -241,10 +250,9 @@ globalkeys = awful.util.table.join(awful.key({ modkey, }, "Left", awful.tag.view
 
     -- Standard program
     awful.key({ modkey, }, "Return", function() awful.util.spawn(terminal) end),
-
     awful.key({ modkey }, "f", function() awful.util.spawn(fileManager) end),
     awful.key({ modkey }, "e", function() awful.util.spawn(visualEditor) end),
-    awful.key({ modkey, "Control" }, "l", function() awful.util.spawn("slock") end),
+    awful.key({ modkey, "Control" }, "l", function() awful.util.spawn(locker) end),
 
     awful.key({ modkey, "Control" }, "r", awesome.restart),
 
@@ -254,10 +262,12 @@ globalkeys = awful.util.table.join(awful.key({ modkey, }, "Left", awful.tag.view
     awful.key({ modkey, "Shift" }, "l", function() awful.tag.incnmaster(-1) end),
     awful.key({ modkey, "Control" }, "h", function() awful.tag.incncol(1) end),
     awful.key({ modkey, "Control" }, "l", function() awful.tag.incncol(-1) end),
+
     awful.key({ modkey, }, "space", function() awful.layout.inc(layouts, 1) end),
 
     -- Prompt
     awful.key({ modkey }, "r", function() mypromptbox[mouse.screen]:run() end))
+
 
 clientkeys = awful.util.table.join(awful.key({ modkey, "Control" }, "f", function(c) c.fullscreen = not c.fullscreen end),
     awful.key({ modkey, "Shift" }, "c", function(c) c:kill() end),
@@ -365,11 +375,15 @@ awful.rules.rules = {
     },
 
     -- Set Firefox to always map on tags number 2 of screen 1.
-    { rule = { class = "Skype" },
-       properties = { tag = tags[1][3] } },
+    {
+        rule = { class = "Skype" },
+        properties = { tag = tags[1][3] }
+    },
 
-    { rule = { class = "VirtualBox" },
-        properties = { tag = tags[1][4] } }
+    {
+        rule = { class = "VirtualBox" },
+        properties = { tag = tags[1][4] }
+    }
 }
 -- }}}
 
