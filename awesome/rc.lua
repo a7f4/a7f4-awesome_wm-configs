@@ -130,20 +130,21 @@ mytaglist.buttons = awful.util.table.join(awful.button({}, 1, awful.tag.viewonly
     awful.button({}, 5, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end))
 mytasklist = {}
 mytasklist.buttons = awful.util.table.join(awful.button({}, 1, function(c)
-    if c == client.focus then
-        c.minimized = true
-    else
-        -- Without this, the following
+---
+   --- if c == client.focus then
+   --     c.minimized = true
+   -- else
+   ---     -- Without this, the following
         -- :isvisible() makes no sense
-        c.minimized = false
-        if not c:isvisible() then
+   ---     c.minimized = false
+     ---   if not c:isvisible() then
             awful.tag.viewonly(c:tags()[1])
-        end
+     ---   end
         -- This will also un-minimize
         -- the client, if needed
-        client.focus = c
-        c:raise()
-    end
+      ---  client.focus = c
+       -- c:raise()
+  --  end
 end),
     awful.button({}, 3, function()
         if instance then
