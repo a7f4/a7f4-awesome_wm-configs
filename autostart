@@ -1,6 +1,3 @@
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+xscreensaver -no-splash &
 nm-applet &
-nitrogen --restore &
-xbacklight -set 75 &
-batterymon -t '16x16' &
-xxkb &
+setxkbmap -option grp:caps_toggle "us,ru"
