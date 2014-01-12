@@ -10,4 +10,5 @@ Requirements
 * awesome 3.5
 * python-distutils-extra
 * wmname
-
+* synapse
+* numlockx

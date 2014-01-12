@@ -20,4 +20,8 @@ helpers.run_once("nm-applet")
 -- Power manager
 helpers.run_once("xfce4-power-manager")
 
+-- Application launcher
+helpers.run_once("synapse", "-s")
 
+-- Enable numlock
+helpers.run_once("numlockx", "on")
