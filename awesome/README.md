@@ -12,3 +12,4 @@ Requirements
 * wmname
 * synapse
 * numlockx
+* thunar

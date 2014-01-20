@@ -7,6 +7,7 @@
 --]]
 
 local awful = require("awful")
+local naughty = require("naughty")
 awful.rules = require("awful.rules")
 
 awful.rules.rules = {
@@ -75,7 +76,21 @@ awful.rules.rules = {
     {
         rule = { class = "VirtualBox" },
         properties = { tag = tags[1][4] }
-    }
+    },
+	-- IntelJ Products
+	{
+		rule_any = { class = {"jetbrains-pychar", "jetbrains-webstorm"} },
+		except = { skip_taskbar = true },
+        properties = { 
+			tag = tags[mouse.screen][2],
+			floating = true,
+			switchtotag = true,
+			x=5,
+			y=40,
+			width=screen[mouse.screen].workarea.width - 20,
+			height=screen[mouse.screen].workarea.height - 30
+		}
+	}
 }
 
 return awful.rules.rules

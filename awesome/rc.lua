@@ -10,11 +10,11 @@ local onscreen_wigets = require("onscreen_wigets")
 local helpers = require("helpers")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "terminal"
-fileManager = "pcmanfm"
+terminal = "gnome-terminal"
+fileManager = "thunar"
 visualEditor = "gedit"
 taskManager = "lxtask"
-locker = "xscreensaver-command -lock"
+locker = "gnome-screensaver-command -l"
 logoutCmd = "oblogout"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e nano"
