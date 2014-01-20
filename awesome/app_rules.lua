@@ -77,19 +77,24 @@ awful.rules.rules = {
         rule = { class = "VirtualBox" },
         properties = { tag = tags[1][4] }
     },
-	-- IntelJ Products
+	-- IntelJ Products: Main window should be floating and almost fullscreen (java issue workaround)
 	{
-		rule_any = { class = {"jetbrains-pychar", "jetbrains-webstorm"} },
+		rule_any = { class = {"jetbrains-pychar", "jetbrains-webstorm", "jetbrains-phpstorm"} },
 		except = { skip_taskbar = true },
         properties = { 
 			tag = tags[mouse.screen][2],
 			floating = true,
 			switchtotag = true,
 			x=5,
-			y=40,
+			y=45,
 			width=screen[mouse.screen].workarea.width - 20,
-			height=screen[mouse.screen].workarea.height - 30
+			height=screen[mouse.screen].workarea.height - 35
 		}
+	},
+	-- For wine applications windows which are not presented in taskbar should be always on top
+	{
+		rule = { class = "Wine", skip_taskbar = true },
+		properties = { ontop = true }        
 	}
 }
 
