@@ -1,0 +1,1 @@
+SUBSYSTEM=="drm", RUN+="su LOGICIFY\\corvis -c /usr/local/bin/hotplug_monitor.sh"
