@@ -52,27 +52,6 @@ batwidget = lain.widgets.bat({
     end
 })
 
--- ALSA volume bar
-myvolumebar = lain.widgets.alsabar({
-    width  = 80,
-    height = 10,
-    colors = {
-        background = "#383838",
-        unmute     = "#80CCE6",
-        mute       = "#FF9F9F"
-    },
-    notifications = {
-        font      = "Tamsyn",
-        font_size = "12",
-        bar_size  = 32
-    }
-})
-alsamargin = wibox.layout.margin(myvolumebar.bar, 5, 8, 80)
-wibox.layout.margin.set_top(alsamargin, 12)
-wibox.layout.margin.set_bottom(alsamargin, 12)
-volumewidget = wibox.widget.background()
-volumewidget:set_widget(alsamargin)
-volumewidget:set_bgimage(beautiful.widget_bg)
 
 -- CPU
 cpu_widget = lain.widgets.cpu({

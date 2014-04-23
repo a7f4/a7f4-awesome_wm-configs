@@ -14,9 +14,9 @@ globalkeys = awful.util.table.join(
 
     -- Special keys integration (no modkey required)
     awful.key({}, "XF86PowerOff", function() awful.util.spawn(logoutCmd) end),
-    awful.key({}, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer set Master 5%+ unmute") end),
-    awful.key({}, "XF86AudioLowerVolume", function() awful.util.spawn("amixer set Master 5%- unmute") end),
-    awful.key({}, "XF86AudioMute", function() awful.util.spawn("amixer set Master toggle") end),
+--    awful.key({}, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer set Master 5%+ unmute") end),
+--    awful.key({}, "XF86AudioLowerVolume", function() awful.util.spawn("amixer set Master 5%- unmute") end),
+--    awful.key({}, "XF86AudioMute", function() awful.util.spawn("amixer set Master toggle") end),
     awful.key({}, "XF86Sleep", function() awful.util.spawn("systemctl suspend") end),
 
 
