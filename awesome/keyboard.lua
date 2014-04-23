@@ -18,7 +18,9 @@ globalkeys = awful.util.table.join(
 --    awful.key({}, "XF86AudioLowerVolume", function() awful.util.spawn("amixer set Master 5%- unmute") end),
 --    awful.key({}, "XF86AudioMute", function() awful.util.spawn("amixer set Master toggle") end),
     awful.key({}, "XF86Sleep", function() awful.util.spawn("systemctl suspend") end),
-
+	awful.key({}, "XF86Calculator", function() awful.util.spawn(calculatorCmd) end),
+	awful.key({}, "XF86MyComputer", function() awful.util.spawn(fileManager) end),
+	awful.key({}, "XF86HomePage", function() awful.util.spawn(webBrowserCmd) end),
 
     awful.key({ modkey, }, "j",
         function()
