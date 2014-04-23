@@ -13,3 +13,4 @@ Requirements
 * synapse
 * numlockx
 * thunar
+* volumeicon

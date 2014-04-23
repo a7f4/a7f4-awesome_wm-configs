@@ -180,7 +180,6 @@ for s = 1, screen.count() do
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(batwidget)
     right_layout:add(spr_very_small)
-    right_layout:add(volumewidget)
 
     right_layout:add(spr_left)
 

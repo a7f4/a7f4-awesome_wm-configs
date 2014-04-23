@@ -62,10 +62,10 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey, }, "=", function() awful.tag.incmwfact(0.05) end),
     awful.key({ modkey, }, "-", function() awful.tag.incmwfact(-0.05) end),
-    awful.key({ modkey, "Shift" }, "h", function() awful.tag.incnmaster(1) end),
+	awful.key({ modkey, "Shift" }, "h", function() awful.tag.incnmaster(1) end),
     awful.key({ modkey, "Shift" }, "l", function() awful.tag.incnmaster(-1) end),
-    awful.key({ modkey, "Control" }, "h", function() awful.tag.incncol(1) end),
-    awful.key({ modkey, "Control" }, "l", function() awful.tag.incncol(-1) end),
+    awful.key({ modkey, }, "]", function() awful.tag.incncol(1) end),
+    awful.key({ modkey, }, "[", function() awful.tag.incncol(-1) end),
 
     awful.key({ modkey, }, "space", function() awful.layout.inc(layouts, 1) end),
 
@@ -76,28 +76,38 @@ globalkeys = awful.util.table.join(
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it works on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
+-- Numpad: [0-9] = [#90, #87-#89, #83-#85, #79-#81]
+local np_map = { 87, 88, 89, 83, 84, 85, 79, 80, 81 }
 for i = 1, 9 do
+    switchTag = function()
+        local screen = mouse.screen
+        if tags[screen][i] then
+            awful.tag.viewonly(tags[screen][i])
+        end
+    end
+	toggleTag = function ()
+        local screen = mouse.screen
+        if tags[screen][i] then
+            awful.tag.viewtoggle(tags[screen][i])
+        end
+    end
+	moveToTag = function()
+		if client.focus and tags[client.focus.screen][i] then
+            awful.client.movetotag(tags[client.focus.screen][i])
+        end
+	end
+
     globalkeys = awful.util.table.join(globalkeys,
-        awful.key({ modkey }, "#" .. i + 9,
-            function()
-                local screen = mouse.screen
-                if tags[screen][i] then
-                    awful.tag.viewonly(tags[screen][i])
-                end
-            end),
-        awful.key({ modkey, "Control" }, "#" .. i + 9,
-            function ()
-                local screen = mouse.screen
-                if tags[screen][i] then
-                    awful.tag.viewtoggle(tags[screen][i])
-                end
-            end),
-        awful.key({ modkey, "Shift" }, "#" .. i + 9,
-            function ()
-                if client.focus and tags[client.focus.screen][i] then
-                    awful.client.movetotag(tags[client.focus.screen][i])
-                end
-            end),
+		-- Switch tag
+		awful.key({ modkey }, "#" .. i + 9, switchTag),
+		awful.key({ modkey }, "#" .. np_map[i], switchTag),
+
+        awful.key({ modkey, "Control" }, "#" .. i + 9, toggleTag),
+        awful.key({ modkey, "Control" }, "#" .. np_map[i], toggleTag),
+
+        awful.key({ modkey, "Shift" }, "#" .. i + 9, moveToTag),
+        awful.key({ modkey, "Shift" }, "#" .. np_map[i], moveToTag),
+
         awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
             function ()
                 if client.focus and tags[client.focus.screen][i] then
