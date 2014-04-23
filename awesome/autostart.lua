@@ -29,8 +29,5 @@ helpers.run_once("synapse", "-s")
 -- Enable numlock
 helpers.run_once("numlockx", "on")
 
--- Enable numlock
-helpers.run_once("volumeicon")
-
 -- Google chrome
 helpers.run_once("/opt/google/chrome/google-chrome --no-startup-window")
