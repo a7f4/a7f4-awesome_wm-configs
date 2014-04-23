@@ -52,7 +52,11 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "l", function() awful.util.spawn(locker) end),
     awful.key({ modkey, "Control" }, "Delete", function() awful.util.spawn(taskManager) end),
 
-    awful.key({ modkey, "Control" }, "r", awesome.restart),
+    awful.key({ modkey, "Control" }, "r", 
+		function()
+			awful.util.pread("hotplug_monitor.sh")
+			awesome.restart()
+		end),
 
     awful.key({ modkey, }, "=", function() awful.tag.incmwfact(0.05) end),
     awful.key({ modkey, }, "-", function() awful.tag.incmwfact(-0.05) end),

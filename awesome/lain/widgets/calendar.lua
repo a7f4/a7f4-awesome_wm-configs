@@ -99,6 +99,7 @@ function calendar:show(t_out, inc_offset)
                                         position = calendar.position,
                                         fg = calendar.fg,
                                         bg = calendar.bg,
+										screen = mouse.screen,
                                         timeout = tims })
 end
 
