@@ -12,5 +12,5 @@ Requirements
 * wmname
 * synapse
 * numlockx
-* thunar
+* nemo
 * volumeicon

@@ -29,5 +29,8 @@ helpers.run_once("synapse", "-s")
 -- Enable numlock
 helpers.run_once("numlockx", "on")
 
+-- Apply Fix for desktop java apps
+helpers.run_once("./bin/fix-java-app.sh")
+
 -- Google chrome
 helpers.run_once("/opt/google/chrome/google-chrome --no-startup-window")
