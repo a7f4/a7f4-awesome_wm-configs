@@ -20,6 +20,7 @@ globalkeys = awful.util.table.join(
     awful.key({}, "XF86Sleep", function() awful.util.spawn("systemctl suspend") end),
 	awful.key({}, "XF86Calculator", function() awful.util.spawn(calculatorCmd) end),
 	awful.key({}, "XF86MyComputer", function() awful.util.spawn(fileManager) end),
+	awful.key({}, "XF86Display", function() awful.util.spawn(reconfigureXrandCmd) end),	
 	awful.key({}, "XF86HomePage", function() awful.util.spawn(webBrowserCmd) end),
 
     awful.key({ modkey, }, "j",

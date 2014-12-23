@@ -10,11 +10,12 @@ local onscreen_wigets = require("onscreen_wigets")
 local helpers = require("helpers")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "gnome-terminal"
+terminal = "lxterminal"
 fileManager = "thunar"
 visualEditor = "gedit"
 taskManager = "lxtask"
-locker = "gnome-screensaver-command -l"
+reconfigureXrandCmd = "randr-conf"
+locker = "i3lock -c 000000 -d 10 -i /srv/projects/corvis-linux-configs/awesome/themes/logicify/wall.png"
 logoutCmd = "oblogout"
 calculatorCmd = "gnome-calculator"
 webBrowserCmd = "google-chrome"

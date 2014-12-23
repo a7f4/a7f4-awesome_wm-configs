@@ -34,3 +34,6 @@ helpers.run_once("./bin/fix-java-app.sh")
 
 -- Google chrome
 helpers.run_once("/opt/google/chrome/google-chrome --no-startup-window")
+
+-- Setup screens layout
+helpers.run_once("randr-conf")
