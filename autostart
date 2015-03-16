@@ -1,3 +1,0 @@
-xscreensaver -no-splash &
-nm-applet &
-setxkbmap -option grp:caps_toggle "us,ru"
