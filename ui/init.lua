@@ -1,8 +1,14 @@
 local lain    = require("lain")
 require("ui.menu")
-
-
+vicious = require("vicious")
 local wibox = require("wibox")
+
+datewidget = wibox.widget.textbox()
+-- Register widget
+--vicious.register(datewidget, vicious.widgets.date, "%b %d, %R", 60)
+vicious.register(datewidget, vicious.widgets.date, "%R, %a %Y-%m-%d", 60)
+
+
 -- {{{ Wibox
 markup = lain.util.markup
 blue   = "#80CCE6"
@@ -210,7 +216,8 @@ for s = 1, screen.count() do
 --    bottom_right_layout:add(calendarwidget)
     bottom_right_layout:add(bottom_bar)
     bottom_right_layout:add(clock_icon)
-    bottom_right_layout:add(clockwidget)
+    bottom_right_layout:add(datewidget)
+    --bottom_right_layout:add(clockwidget)
     bottom_right_layout:add(last)
     -- Now bring it all together (with the tasklist in the middle)
     bottom_layout = wibox.layout.align.horizontal()
