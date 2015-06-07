@@ -11,19 +11,21 @@ local helpers = require("helpers")
 
 
 -- This is used later as the default terminal and editor to run.
+configDir = awful.util.getdir("config")
 terminal = "gnome-terminal -e tmux"
-suspender = "tst.sh"
 fileManager = "thunar"
 visualEditor = "gvim"
 taskManager = "lxtask"
 reconfigureXrandCmd = "randr-conf"
-locker = "/home/aleks/bin/shell-scripts/lock"
 logoutCmd = "dm-tool switch-to-greeter"
+locker = configDir .. "/bin/lock"
+suspendCmd = configDir .. "/bin/suspend.sh"
+touchpadToggleCmd = configDir .. "/bin/touchpadToggle.sh"
 calculatorCmd = "gnome-calculator"
 webBrowserCmd = "google-chrome"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e vim"
-themeLocation = awful.util.getdir("config") .. "/themes/logicify"
+themeLocation = configDir .. "/themes/logicify"
 themeFile = themeLocation .. "/theme.lua"
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.

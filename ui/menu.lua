@@ -12,9 +12,10 @@ menubar = require("menubar")
 -- Create a laucher widget and a main menu
 mainmenu = awful.menu({
     items = {
+        {"touchpad ON|OFF", touchpadToggleCmd},
         { "swich user", logoutCmd, beautiful.awesome_icon },
         { "restart", awesome.restart },
-        { "suspend", "/home/aleks/bin/shell-scrip/tst.sh" }
+        { "suspend", suspendCmd }
     }
 })
 

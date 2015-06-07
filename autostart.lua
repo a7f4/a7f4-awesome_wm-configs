@@ -51,3 +51,5 @@ helpers.run_once("./bin/fix-java-app.sh")
 
 -- Fixes for tearing
 helpers.run_once("compton", "--backend glx --paint-on-overlay --glx-no-stencil --vsync opengl-swc --unredir-if-possible") 
+
+os.execute("./bin/keyboard_layout_fix.sh")

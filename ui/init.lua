@@ -11,7 +11,7 @@ vicious.register(datewidget, vicious.widgets.date, "%R, %a %Y-%m-%d", 60)
 
 -- {{{ Wibox
 markup = lain.util.markup
-blue   = "#80CCE6"
+blue   = "#00A613"
 space3 = markup.font("Tamsyn 3", " ")
 space2 = markup.font("Tamsyn 2", " ")
 -- Menu icon

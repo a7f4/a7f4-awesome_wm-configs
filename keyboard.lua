@@ -7,8 +7,8 @@
 --]]
 
 globalkeys = awful.util.table.join(
-    awful.key({ modkey, }, "w", function () mainmenu:toggle() end),
-    awful.key({ modkey, }, "e", function () awful.menu.clients({width = 450}) end),
+    awful.key({ modkey, }, "e", function () mainmenu:toggle() end),
+    awful.key({ modkey, }, "w", function () awful.menu.clients({width = 450}) end),
     awful.key({ modkey, }, "Left", awful.tag.viewprev),
     awful.key({ modkey, }, "Right", awful.tag.viewnext),
     awful.key({ modkey, }, "Escape", awful.tag.history.restore),
@@ -43,6 +43,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "j", function() awful.screen.focus_relative(1) end),
     awful.key({ modkey, "Control" }, "k", function() awful.screen.focus_relative(-1) end),
     awful.key({ modkey, }, "u", awful.client.urgent.jumpto),
+
     awful.key({ modkey, }, "Tab",
         function()
             awful.client.focus.history.previous()
@@ -50,7 +51,6 @@ globalkeys = awful.util.table.join(
                 client.focus:raise()
             end
         end),
-
 
 
     awful.key({ modkey, "Control" }, "]", function() awful.util.spawn("keepassx") end),
