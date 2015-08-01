@@ -12,6 +12,7 @@ menubar = require("menubar")
 -- Create a laucher widget and a main menu
 mainmenu = awful.menu({
     items = {
+        {"DPMS OFF", dpms_off},
         {"touchpad ON|OFF", touchpadToggleCmd},
         { "swich user", logoutCmd, beautiful.awesome_icon },
         { "restart", awesome.restart },

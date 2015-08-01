@@ -3,8 +3,13 @@ local helpers = require("helpers")
 -- Start screen sever daemon
 -- helpers.run_once("gnome-screensaver")
 
+awful.util.spawn(bitstamp)
+
 -- Setup keyboard delay
 os.execute("xset r rate 220 30")
+
+-- disable middle button for paste 
+os.execute("xinput set-button-map 13 1 0 3 4 5 6 7")
 
 -- Setup default brightness
 os.execute("xbacklight", "-set 15")
