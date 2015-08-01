@@ -1,9 +1,4 @@
---
--- User: LOGICIFY\corvis
--- Date: 1/12/14
--- Time: 11:18 PM
--- To change this template use File | Settings | File Templates.
---
+local helpers = require("../helpers")
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
@@ -78,9 +73,12 @@ client.connect_signal("focus",
             c.border_width = 0
             c.border_color = beautiful.border_normal
         else
+
             c.border_width = beautiful.border_width
             c.border_color = beautiful.border_focus
         end
+
+
     end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}

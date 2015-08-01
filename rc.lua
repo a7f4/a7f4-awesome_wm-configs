@@ -9,6 +9,7 @@ local naughty = require("naughty")
 local onscreen_wigets = require("onscreen_wigets")
 local helpers = require("helpers")
 
+screensQty = screen.count()
 
 -- This is used later as the default terminal and editor to run.
 configDir = awful.util.getdir("config")
@@ -24,7 +25,9 @@ dpms_off = configDir .. "/bin/dpms_off.sh"
 suspendCmd = configDir .. "/bin/suspend.sh"
 touchpadToggleCmd = configDir .. "/bin/touchpadToggle.sh"
 calculatorCmd = "gnome-calculator"
+screenshot = "gnome-screenshot"
 webBrowserCmd = "google-chrome"
+copyq = "copyq toggle"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e vim"
 themeLocation = configDir .. "/themes/logicify"
@@ -91,15 +94,33 @@ end
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {}
-for s = 1, screen.count() do
-    -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 'WEB', 'SKYPE', 'TERM', 'IDE', 'DB', 'MAIL','FILES','MEDIA' }, s, layouts[1])
+
+local screenForMail
+
+if screensQty > 1 then
+
+    screenForMail = 2
+    for s = 1 , screensQty-1 do
+        -- Each screen has its own tag table.
+        tags[s] = awful.tag({ 'WEB', 'SKYPE', 'TERM', 'IDE', 'DB', 'MAIL','FILES','MEDIA' }, s, layouts[1])
+    end
+
+    else
+        screenForMail = 1
+        tags[1] = awful.tag({ 'WEB', 'SKYPE', 'TERM', 'IDE', 'DB', 'MAIL','FILES','MEDIA' }, 1, layouts[1])
+
+
 end
+
+if screensQty == 3 then
+    tags[3] = awful.tag({ 'WEB', 'SKYPE', 'TERM', 'IDE', 'DB', 'MUSIC','AWESOME','LOGS' }, 3, layouts[1])
+end
+
 -- }}}
 
 tag_skype = tags[1][2]
 tag_ide = tags[1][4]
-tag_mail = tags[1][6]
+tag_mail = tags[screenForMail][6]
 tags_files = tags[1][7]
 tag_media = tags[1][8]
 
