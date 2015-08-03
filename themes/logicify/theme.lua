@@ -9,9 +9,9 @@ theme                               = {}
 
 theme.icon_dir                      = os.getenv("HOME") .. "/.config/awesome/themes/logicify/icons"
 
---theme.wallpaper                     = os.getenv("HOME") .. "/.config/awesome/themes/logicify/wall.jpg"
+theme.wallpaper                     = os.getenv("HOME") .. "/.config/awesome/themes/logicify/wall.jpg"
 
-theme.wallpaper                     = os.getenv("HOME") .. "/tmp/wallpapers/surface_dirt_background_texture_50766_1280x900.jpg"
+--theme.wallpaper                     = os.getenv("HOME") .. "/tmp/wallpapers/surface_dirt_background_texture_50766_1280x900.jpg"
 theme.topbar_path                   = "png:" .. theme.icon_dir .. "/topbar/"
 
 --theme.font                          = "Monospace 10.5"

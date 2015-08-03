@@ -39,8 +39,8 @@ lain.widgets.calendar:attach(calendarwidget, { fg = "#FFFFFF", position = "botto
 -- Battery
 batwidget = lain.widgets.bat({
     settings = function()
-        bat_header = "<span weight=\"bold\">⚡</span> "
-        bat_p      = bat_now.perc .. "% "
+        local bat_header = "<span weight=\"bold\">⚡</span> "
+        local bat_p      = bat_now.perc .. "% "
 
         if bat_now.status == "Not present" then
             bat_header = ""
@@ -53,17 +53,18 @@ batwidget = lain.widgets.bat({
 
 --Bitstamp
 
-bitstamp_widget = lain.widgets.bitstamp({
-    settings = function()
-        widget:set_markup(space3 .. "BTC " .. bitstamp_now.trade_data
-                .. markup.font("Tamsyn 5", " "))
-    end
-})
-bitstampwidget = wibox.widget.background()
-bitstampwidget:set_widget(bitstamp_widget)
-bitstampwidget:set_bgimage(beautiful.widget_bg)
-bitstamp_icon = wibox.widget.imagebox()
-bitstamp_icon:set_image(beautiful.cpu)
+--bitstamp_widget = lain.widgets.bitstamp({
+--    settings = function()
+--        widget:set_markup(space3 .. "BTC " .. bitstamp_now.trade_data
+--                .. markup.font("Tamsyn 5", " "))
+--    end
+--})
+
+--bitstampwidget = wibox.widget.background()
+--bitstampwidget:set_widget(bitstamp_widget)
+--bitstampwidget:set_bgimage(beautiful.widget_bg)
+--bitstamp_icon = wibox.widget.imagebox()
+--bitstamp_icon:set_image(beautiful.cpu)
 
 -- CPU
 cpu_widget = lain.widgets.cpu({
@@ -219,8 +220,9 @@ for s = 1, screen.count() do
     bottom_right_layout = wibox.layout.fixed.horizontal()
     bottom_right_layout:add(spr_bottom_right)
 
-    bottom_right_layout:add(bitstamp_icon)
-    bottom_right_layout:add(bitstampwidget)
+--    bottom_right_layout:add(bitstamp_icon)
+--    bottom_right_layout:add(bitstampwidget)
+
     bottom_right_layout:add(netdown_icon)
     bottom_right_layout:add(networkwidget)
     bottom_right_layout:add(netup_icon)
