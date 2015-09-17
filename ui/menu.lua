@@ -14,6 +14,7 @@ mainmenu = awful.menu({
     items = {
         {"DPMS OFF", dpms_off},
         {"touchpad ON|OFF", touchpadToggleCmd},
+        {"bitstamp trade", bitstampCmd},
         { "swich user", logoutCmd, beautiful.awesome_icon },
         { "quit", awesome.quit },
         { "restart", awesome.restart },
