@@ -55,7 +55,8 @@ batwidget = lain.widgets.bat({
 
 bitstamp_widget = lain.widgets.bitstamp({
     settings = function()
-        widget:set_markup(space3 .. "BTC " .. bitstamp_now.trade_data
+        data  = bitstamp_now.trade_data or "[...]"
+        widget:set_markup(space3 .. "BTC " .. data
                 .. markup.font("Tamsyn 5", " "))
     end
 })

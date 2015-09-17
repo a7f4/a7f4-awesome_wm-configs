@@ -61,6 +61,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "Return", function() awful.util.spawn(terminal) end),
     awful.key({ modkey }, "f", function() awful.util.spawn(fileManager) end),
     awful.key({ modkey }, "`", function() awful.util.spawn(copyq) end),
+    awful.key({ modkey }, "n", function() awful.util.spawn(quickNote) end),
+    awful.key({ modkey, "Shift" }, "n", function() awful.util.spawn(structuredNotes) end),
     awful.key({ modkey }, "Print", function() awful.util.spawn("gnome-screenshot -i") end),
     awful.key({ modkey, "Mod1" }, "l", function() awful.util.spawn(locker) end),
     awful.key({ modkey, "Control" }, "Delete", function() awful.util.spawn(taskManager) end),
@@ -85,7 +87,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, }, "space", function() awful.layout.inc(layouts, 1) end),
 
     -- Synapse launcher
-    awful.key({ modkey }, "r", function() awful.util.spawn("gnome-do") end))
+    awful.key({ modkey }, "r", function() awful.util.spawn("synapse") end))
 
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it works on any keyboard layout.

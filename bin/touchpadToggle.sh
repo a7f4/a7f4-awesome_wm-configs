@@ -13,5 +13,7 @@ case "$newState" in
     notify-send "Touchpad enabled" ;;
 esac
 
+#turn off 'paste from clipboard' by middle button
+xmodmap -e "pointer = 1 25 3 4 5 6 7 8 9"
 
 `echo 'xinput set-prop ' $touchPadID ' 135 ' $newState`

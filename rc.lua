@@ -13,8 +13,8 @@ screensQty = screen.count()
 
 -- This is used later as the default terminal and editor to run.
 configDir = awful.util.getdir("config")
-terminal = "gnome-terminal -e tmux"
-fileManager = "thunar"
+terminal = 'gnome-terminal -e "tmux -2"'
+fileManager = "spacefm"
 bitstamp = configDir .. "/bin/bitstamp_trade.sh"
 visualEditor = "gvim"
 taskManager = "lxtask"
@@ -28,6 +28,8 @@ calculatorCmd = "gnome-calculator"
 screenshot = "gnome-screenshot"
 webBrowserCmd = "google-chrome"
 copyq = "copyq toggle"
+quickNote = "xpad -n"
+structuredNotes = "tomboy --new-note"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e vim"
 themeLocation = configDir .. "/themes/logicify"
