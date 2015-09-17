@@ -69,6 +69,7 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey, "Control" }, "r", 
 		function()
+            screensQty = screen.count()
 			awful.util.pread("hotplug_monitor.sh")
 			awesome.restart()
 		end),
@@ -76,8 +77,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "l", function() awful.tag.incmwfact(0.05) end),
     awful.key({ modkey, "Control" }, "h", function() awful.tag.incmwfact(-0.05) end),
 
-    awful.key({ modkey, "Control" }, "k", function() awful.client.incwfact(0.05) end),
-    awful.key({ modkey, "Control" }, "j", function() awful.client.incwfact(-0.05) end),
+    awful.key({ modkey, "Control" ,"Shift"}, "k", function() awful.client.incwfact(0.05) end),
+    awful.key({ modkey, "Control", "Shift" }, "j", function() awful.client.incwfact(-0.05) end),
 
 	awful.key({ modkey, "Shift" }, "h", function() awful.tag.incnmaster(1) end),
     awful.key({ modkey, "Shift" }, "l", function() awful.tag.incnmaster(-1) end),

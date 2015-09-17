@@ -39,8 +39,8 @@ lain.widgets.calendar:attach(calendarwidget, { fg = "#FFFFFF", position = "botto
 -- Battery
 batwidget = lain.widgets.bat({
     settings = function()
-        bat_header = "<span weight=\"bold\">⚡</span> "
-        bat_p      = bat_now.perc .. "% "
+        local bat_header = "<span weight=\"bold\">⚡</span> "
+        local bat_p      = bat_now.perc .. "% "
 
         if bat_now.status == "Not present" then
             bat_header = ""
