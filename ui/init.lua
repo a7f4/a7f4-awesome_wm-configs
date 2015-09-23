@@ -9,6 +9,26 @@ datewidget = wibox.widget.textbox()
 vicious.register(datewidget, vicious.widgets.date, "%R, %a %Y-%m-%d", 60)
 
 
+-- {{{ Keyboard layout widget
+kbdwidget = wibox.widget.textbox(" EN ")
+kbdwidget.border_width = 1
+kbdwidget.border_color = beautiful.fg_normal
+kbdwidget:set_text(" EN ")
+-- }}}
+
+
+kbdstrings = {[0] = " EN ", 
+              [1] = " RU "}
+
+dbus.request_name("session", "ru.gentoo.kbdd")
+dbus.add_match("session", "interface='ru.gentoo.kbdd',member='layoutChanged'")
+dbus.connect_signal("ru.gentoo.kbdd", function(...)
+    local data = {...}
+    local layout = data[2]
+    kbdwidget:set_markup(kbdstrings[layout])
+end
+)
+
 -- {{{ Wibox
 markup = lain.util.markup
 blue   = "#00A613"
@@ -197,6 +217,7 @@ for s = 1, screen.count() do
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(batwidget)
+    right_layout:add(kbdwidget)
     right_layout:add(spr_very_small)
     right_layout:add(spr_left)
 

@@ -24,8 +24,8 @@ helpers.run_once("thunderbird")
 helpers.run_once("copyq")
 
 -- Keyboard layout indicator
-os.execute("pkill xxkb")
-helpers.run_once("xxkb")
+os.execute("pkill kbdd")
+helpers.run_once("kbdd")
 
 
 -- Time tracker
