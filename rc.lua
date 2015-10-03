@@ -97,24 +97,26 @@ end
 -- Define a tag table which hold all screen tags.
 tags = {}
 
-local screenForMail
+local screenForMail = 1
 
-if screensQty > 1 then
+if screensQty > 1 and screensQty < 3 then
 
-    screenForMail = 2
-    for s = 1 , screensQty-1 do
+    for s = 1 , screensQty do
         -- Each screen has its own tag table.
         tags[s] = awful.tag({ 'WEB', 'SKYPE', 'TERM', 'IDE', 'DB', 'MAIL','FILES','MEDIA' }, s, layouts[1])
     end
 
-    else
-        screenForMail = 1
-        tags[1] = awful.tag({ 'WEB', 'SKYPE', 'TERM', 'IDE', 'DB', 'MAIL','FILES','MEDIA' }, 1, layouts[1])
-
+else
+    tags[1] = awful.tag({ 'WEB', 'SKYPE', 'TERM', 'IDE', 'DB', 'MAIL','FILES','MEDIA' }, 1, layouts[1])
 
 end
 
 if screensQty == 3 then
+
+    for s = 1 , screensQty-1 do
+        -- Each screen has its own tag table.
+        tags[s] = awful.tag({ 'WEB', 'SKYPE', 'TERM', 'IDE', 'DB', 'MAIL','FILES','MEDIA' }, s, layouts[1])
+    end
     tags[3] = awful.tag({ 'WEB', 'SKYPE', 'TERM', 'IDE', 'DB', 'MUSIC','AWESOME','LOGS' }, 3, layouts[1])
 end
 
@@ -122,7 +124,7 @@ end
 
 tag_skype = tags[1][2]
 tag_ide = tags[1][4]
-tag_mail = tags[screenForMail][6]
+tag_mail = tags[1][6]
 tags_files = tags[1][7]
 tag_media = tags[1][8]
 
