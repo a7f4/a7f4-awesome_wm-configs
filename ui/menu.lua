@@ -18,6 +18,7 @@ mainmenu = awful.menu({
         { "swich user", logoutCmd, beautiful.awesome_icon },
         { "quit", awesome.quit },
         { "restart", awesome.restart },
+        { "sync", syncCmd },
         { "suspend", suspendCmd }
     }
 })

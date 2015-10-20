@@ -23,6 +23,7 @@ logoutCmd = "dm-tool switch-to-greeter"
 locker = configDir .. "/bin/lock"
 dpms_off = configDir .. "/bin/dpms_off.sh"
 suspendCmd = configDir .. "/bin/suspend.sh"
+syncCmd = configDir .. "/bin/sync2flash"
 touchpadToggleCmd = configDir .. "/bin/touchpadToggle.sh"
 calculatorCmd = "gnome-calculator"
 screenshot = "gnome-screenshot"
@@ -56,7 +57,7 @@ end
 do
     local in_error = false
     awesome.connect_signal("debug::error", function(err)
-    -- Make sure we don't go into an endless error loop
+        -- Make sure we don't go into an endless error loop
         if in_error then return end
         in_error = true
 
@@ -99,25 +100,28 @@ tags = {}
 
 local screenForMail = 1
 
-if screensQty > 1 and screensQty < 3 then
 
-    for s = 1 , screensQty do
+
+if screensQty == 1 then
+    tags[1] = awful.tag({ 'WEB', 'SKYPE', 'TERM', 'IDE', 'DB', 'MAIL', 'FILES', 'MEDIA' }, 1, layouts[1])
+end
+
+if screensQty == 2 then
+
+    for s = 1, screensQty do
         -- Each screen has its own tag table.
-        tags[s] = awful.tag({ 'WEB', 'SKYPE', 'TERM', 'IDE', 'DB', 'MAIL','FILES','MEDIA' }, s, layouts[1])
+        tags[s] = awful.tag({ 'WEB', 'SKYPE', 'TERM', 'IDE', 'DB', 'MAIL', 'FILES', 'MEDIA' }, s, layouts[1])
     end
-
-else
-    tags[1] = awful.tag({ 'WEB', 'SKYPE', 'TERM', 'IDE', 'DB', 'MAIL','FILES','MEDIA' }, 1, layouts[1])
 
 end
 
 if screensQty == 3 then
 
-    for s = 1 , screensQty-1 do
+    for s = 1, screensQty - 1 do
         -- Each screen has its own tag table.
-        tags[s] = awful.tag({ 'WEB', 'SKYPE', 'TERM', 'IDE', 'DB', 'MAIL','FILES','MEDIA' }, s, layouts[1])
+        tags[s] = awful.tag({ 'WEB', 'SKYPE', 'TERM', 'IDE', 'DB', 'MAIL', 'FILES', 'MEDIA' }, s, layouts[1])
     end
-    tags[3] = awful.tag({ 'WEB', 'SKYPE', 'TERM', 'IDE', 'DB', 'MUSIC','AWESOME','LOGS' }, 3, layouts[1])
+    tags[3] = awful.tag({ 'WEB', 'SKYPE', 'TERM', 'IDE', 'DB', 'MUSIC', 'AWESOME', 'LOGS' }, 3, layouts[1])
 end
 
 -- }}}
@@ -130,8 +134,8 @@ tag_media = tags[1][8]
 
 -- awful.layout.set(awful.layout.suit.tile.left, tag_skype)
 awful.tag.setncol(2, tag_skype)
-awful.tag.setmwfact (0.2, tag_skype)
-awful.tag.setnmaster (1, tag_skype)
+awful.tag.setmwfact(0.2, tag_skype)
+awful.tag.setnmaster(1, tag_skype)
 
 require("ui")
 

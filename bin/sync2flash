@@ -1,0 +1,4 @@
+cp -rf /home/aleks/.local/share/gtg/* /media/aleks/aleks-keys/gtg && echo 'gtg files copied' &&
+cp -rf /home/aleks/.password-store/* /media/aleks/aleks-keys/.password-store/ && echo 'passwords copied' &&
+
+gnome-disks

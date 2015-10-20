@@ -43,15 +43,6 @@ awful.rules.rules = {
         properties = { ontop = true }
     },
     -- }}}
-    -- Logout window should be maximized
-    {
-        rule = { class = "Oblogout" },
-        properties = { floating = true,
-        callback = function (c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c.maximized_vertical   = not c.maximized_vertical
-        end}
-    },
     -- {{{ Skype Rules
     {
         rule = { class = "Skype" },
@@ -69,10 +60,16 @@ awful.rules.rules = {
     
     --- {{{ CopyQ Rules
     {
-        rule = { class = "Copyq"}, 
+        rule = { class = "Copyq"},
         properties = {
-             floating = true
-        } 
+            floating = true,
+            x = screen[1].workarea.width - 200,
+            width = 400,
+            height = 200
+        },
+        callback = function(c)
+            awful.client.movetoscreen(c, 1)
+        end
     },
 
     {
